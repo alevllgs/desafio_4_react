@@ -5,6 +5,7 @@
   text-align: center;
 }
 
+
 .titulo{
   text-align: center;
 }
@@ -33,8 +34,8 @@
 
 .row.row-cols-1 {
   display: flex;
-  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en filas */
-  justify-content: space-between; /* Espacia las tarjetas horizontalmente */
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 
