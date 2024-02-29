@@ -12,7 +12,7 @@ function Buscador({ onSearch }) {
         <input
           type="text"
           className="form-control"
-          placeholder="Search for birds..."
+          placeholder="Buscador de aves"
           onChange={handleChange}
         />
       </div>

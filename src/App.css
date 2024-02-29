@@ -5,38 +5,36 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.titulo{
+  text-align: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.buscador_boton{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.buscador{
+  width: 80%;
+  height: 5%;
 }
 
-.card {
-  padding: 2em;
+.boton{
+  width: 20%;
+  height: 5%;
+  margin-top: 2%;
+  margin-right: 6%;
 }
 
-.read-the-docs {
-  color: #888;
+.panel{
+  gap: 10px;
 }
+
+.row.row-cols-1 {
+  display: flex;
+  flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en filas */
+  justify-content: space-between; /* Espacia las tarjetas horizontalmente */
+}
+
+

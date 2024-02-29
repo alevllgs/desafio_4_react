@@ -1,16 +1,17 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
 
 function Tarjetas({ birds }) {
   return (
     <div className="row row-cols-1 row-cols-md-3 g-4">
       {birds.map((bird, index) => (
         <div key={index} className="col">
-          <div className="card h-100">
-            <img src={bird.image} className="card-img-top" alt={bird.name} />
-            <div className="card-body">
-              <h5 className="card-title">{bird.name}</h5>
-            </div>
-          </div>
+          <Card style={{ width: '18rem' }}>
+            <Card.Img variant="top" src={bird.image} alt={bird.name} />
+            <Card.Body>
+              <Card.Title>{bird.name}</Card.Title>
+            </Card.Body>
+          </Card>
         </div>
       ))}
     </div>

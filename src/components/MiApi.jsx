@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import Tarjetas from './Tarjetas';
+import React from 'react';
+import Orden from './Orden';
 import Buscador from './Buscador';
-
+import Button from 'react-bootstrap/Button';
 
 function MiApi({ birds, setBirds }) {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [filteredBirds, setFilteredBirds] = useState([]);
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(null);
+  const [filteredBirds, setFilteredBirds] = React.useState([]);
+  const [sortOrder, setSortOrder] = React.useState('asc');
 
-  useEffect(() => {
+  React.useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch('https://aves.ninjas.cl/api/birds');
@@ -23,7 +24,7 @@ function MiApi({ birds, setBirds }) {
         }));
 
         setBirds(birdData);
-        setFilteredBirds(birdData); // Inicialmente, mostrar todas las aves
+        setFilteredBirds(birdData);
         setLoading(false);
       } catch (error) {
         setError(error);
@@ -41,8 +42,12 @@ function MiApi({ birds, setBirds }) {
     setFilteredBirds(filteredResults);
   };
 
+  const toggleSortOrder = () => {
+    setSortOrder(order => (order === 'asc' ? 'desc' : 'asc'));
+  };
+
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Aves de Chile...</div>;
   }
 
   if (error) {
@@ -51,18 +56,25 @@ function MiApi({ birds, setBirds }) {
 
   return (
     <div>
-      <h1>Bird Names in Spanish</h1>
-      <div className="container">
-        <div className="row">
-          <Buscador onSearch={handleFilter} />
-          <Tarjetas birds={filteredBirds} />
+      <h1 className='titulo'>Aves de Chile</h1>
+     
+        <div className="panel">
+          <div className="buscador_boton">
+            <Buscador className="buscador" onSearch={handleFilter} />
+            <Button className="boton" variant="secondary" onClick={toggleSortOrder}>
+              {sortOrder === 'asc' ? 'Ordenar Z-A' : 'Ordenar A-Z'}
+            </Button>
+          </div>
+          <Orden birds={filteredBirds} order={sortOrder} />
         </div>
       </div>
-    </div>
+   
   );
 }
 
 export default MiApi;
+
+
 
 
 

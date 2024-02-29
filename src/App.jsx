@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 import MiApi from './components/MiApi';
-import Buscador from './components/Buscador';
+import './App.css';
+
 
 function App() {
   const [birds, setBirds] = useState([]);
@@ -13,20 +14,16 @@ function App() {
   }, [birds]);
 
   const handleSearch = (searchTerm) => {
-    console.log("Search Term:", searchTerm);
     const filteredResults = birds.filter(bird =>
       bird.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    console.log("Filtered Birds:", filteredResults);
     setFilteredBirds(filteredResults);
   };
 
-  console.log("Filtered Birds (State):", filteredBirds);
 
   return (
     <div>
-      <Buscador onSearch={handleSearch} />
-      <MiApi birds={filteredBirds} setBirds={setBirds} />
+          <MiApi birds={filteredBirds} setBirds={setBirds} />
     </div>
   );
 }
